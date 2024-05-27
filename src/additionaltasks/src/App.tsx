@@ -128,8 +128,8 @@ export function App1() {
 
     return (
         <div className="App1">
-            <Tasks data1={data1}/>
-            <Tasks data2={data2}/>
+            <Tasks data1Value={data1}/>
+            <Tasks data2Value={data2}/>
         </div>
     );
 }

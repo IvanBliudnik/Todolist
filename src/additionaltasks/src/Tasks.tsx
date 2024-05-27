@@ -1,5 +1,10 @@
 import React from 'react';
 
+type DataType = {
+    data1: object,
+    data2: object,
+}
+
 type DataStudentsArrayProps = {
     names: string,
 }
@@ -20,18 +25,27 @@ type AppDataPropsType = {
     students: Array<DataStudentsArrayProps>,
 }
 
+
+
 export function Tasks(props:AppDataPropsType) {
     return <div>
-        <TasksTitle data1={props.data1} data2={props.data2} students={props.students}/>
+        <ShowDatas data1 = {props.data1Value} />
     </div>
 }
 
-function TasksTitle(props:AppDataPropsType) {
+function ShowDatas(props:DataType) {
     return <div>
-        <div>{props.data1.title}</div>
-        <div>{props.data2.title}</div>
+        <div>{props.data1}</div>
+
     </div>
 }
+
+// function TasksTitle(props:AppDataPropsType) {
+//     return <div>
+//         <div>{props.data1.title}</div>
+//         <div>{props.data2.title}</div>
+//     </div>
+// }
 // function TasksBody(props: DataTasksArrayType) {
 //     return <div>
 //         <div>{props.taskId = 1}, {props.title}, {props.isDone}</div>
