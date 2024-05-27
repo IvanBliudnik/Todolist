@@ -47,6 +47,7 @@ export function App() {
     let [tasks, setTasks] = useState<Array<TaskType>>(initTasks)
     // задаём на выход ожидаемый tasks.filter((t=>{t.isDone === true || false}))
     let [filter, setFilter] = useState<FilterValuesType>("all")
+    //какие tasks отдать в Todolist на отрисовку? => см.filter
     function removeTask(id: number) {
         // tasks.filter пропусти те initTasks id которых не равна
         //t.id которую надо удалить
@@ -54,8 +55,8 @@ export function App() {
         setTasks(filteredTasks);
     }
 
-    function changeFilter(value: FilterValuesType) {
-        setFilter(value)
+    function changeFilter(newValue: FilterValuesType) {
+        setFilter(newValue)
     }
 
     let tasksForTodolist = tasks;
@@ -67,9 +68,13 @@ export function App() {
     if (filter === "active") {
         tasksForTodolist = tasks.filter(t => t.isDone === false)
     }
+
+
+
     return (
         <div className="App">
-            <Todolist title="What to learn" tasks={tasksForTodolist}
+            <Todolist title="What to learn"
+                      tasks={tasksForTodolist}
                       //функции callback ниже
                       removeTask={removeTask}
                       changeFilter={changeFilter}

@@ -1,5 +1,7 @@
 import React from 'react'
 import {FilterValuesType} from "./App";
+import {Button} from "./Button";
+
 
 export type TaskType = {
     id: number
@@ -7,12 +9,24 @@ export type TaskType = {
     isDone: boolean
 }
 
+// export const Todolist = (
+//     {
+//         title,
+//         tasks,
+//         removeTask,
+//         changeFilter
+//     }: TodolistPropsType) => {
+// Деструктуризация
+// }
+// )
+
 export type PropsType = {
     title: string
     tasks: Array<TaskType>
     removeTask: (id: number) => void
-    // props берёт value из FilterValuesType и возвращает ничего (void)
+    // props берёт value из removeTask и возвращает ничего (void)
     changeFilter:(value: FilterValuesType) => void
+    // props берёт value из FilterValuesType и возвращает ничего (void)
 }
 
 export const Todolist = (props: PropsType) => {
@@ -21,21 +35,29 @@ export const Todolist = (props: PropsType) => {
             <h3>{props.title}</h3>
             <div>
                 <input />
-                <button>+</button>
+                <Button title="+" />
             </div>
+
+            {/*const taskElements: Array<JSX.Element> | JSX.Element = tasks.length !== 0 ? tasks.map((task: TaskType) => {*/}
+        {/*    return <li><input type="checkbox" checked={t.isDone}/> <span>{t.title}</span>*/}
+        {/*    <Button title="x" onClickHandler={ () => {props.removeTask(t.id)} }/>*/}
+        {/*</li>*/}
+            {/*}*/}
+            {/*Разобрать по повтору занятий 01 занятие 2*/}
                 <ul>
                     {
                         props.tasks.map(t => {
                             return <li><input type="checkbox" checked={t.isDone}/> <span>{t.title}</span>
-                            <button onClick={ () => {props.removeTask(t.id)} }>x</button>
+                            <Button title="x" onClickHandler={ () => {props.removeTask(t.id)} }/>
                             </li>
                         }
                     )}
+                    :<span>Your TasksList is empty</span>
                 </ul>
             <div>
-                <button onClick={ ()=>{props.changeFilter("all")} }>All</button>
-                <button onClick={ ()=>{props.changeFilter("active")} }>Active</button>
-                <button onClick={ ()=>{props.changeFilter("completed")} }>Completed</button>
+                <Button title="All" onClickHandler={() => props.changeFilter("all")}/>
+                <Button title="Active" onClickHandler={() => props.changeFilter("active")}/>
+                <Button title="Completed" onClickHandler={() => props.changeFilter("completed")}/>
             </div>
         </div>
     )
