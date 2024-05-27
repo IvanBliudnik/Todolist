@@ -13,7 +13,7 @@ import {TaskType, Todolist} from './Todolist';
 
 export type FilterValuesType = "all"| "completed" | "active"
 
-function App() {
+export function App() {
     const initTasks = [
         {id: 1, title: 'HTML&CSS', isDone: true},
         {id: 2, title: 'JS', isDone: true},
@@ -78,4 +78,3 @@ function App() {
     )
 }
 
-export default App;
