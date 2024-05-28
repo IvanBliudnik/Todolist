@@ -22,11 +22,7 @@ type DataTasksArrayType = {
 }
 
 
-function Tasks(props: DataType) {
-    return <div>
-        <div>{props.title}</div>
-    </div>
-}
+
 
 export function App1() {
     const data1 = {
@@ -143,10 +139,17 @@ export function App1() {
         ]
     }
 
+    function Tasks(props: DataType) {
+        return <div>
+            <div title={data1.title}></div>
+            <div tasks={data1.tasks}></div>
+            <div students={data1.students}></div>
+        </div>
+    }
+
     return (
         <div className="App1">
-            <Tasks data1={data1}/>
-            <Tasks data2={data2}/>
+            <Tasks data={data1}/>
         </div>
     );
 }
