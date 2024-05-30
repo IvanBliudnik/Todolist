@@ -20,7 +20,7 @@ export function App() {
         {id: 3, title: 'ReactJS', isDone: false},
         {id: 4, title: 'Redux', isDone: false},
         {id: 5, title: 'Typescript', isDone: false},
-        {id: 6, title: 'RTK query', isDone: false},
+        {id: 6, title: 'RTK Query', isDone: false},
     ]
 
     //Обьяснение useState как блока сохранения первоначальных данных,
@@ -62,11 +62,11 @@ export function App() {
     let tasksForTodolist = tasks;
     // пропускаем те tasks у которых isDone true
     if (filter === "completed") {
-        tasksForTodolist = tasks.filter(t => t.isDone === true)
+        tasksForTodolist = tasks.filter(t => t.isDone)
     }
     // пропускаем те tasks у которых isDone false
     if (filter === "active") {
-        tasksForTodolist = tasks.filter(t => t.isDone === false)
+        tasksForTodolist = tasks.filter(t => !t.isDone)
     }
 
 
