@@ -60,7 +60,7 @@ export function App() {
     function addTask(title: string) {
         let newTask = {
             id: v1(),
-            title: "New Task",
+            title: title,
             isDone: false
         };
         let newTasks = [newTask, ...tasks];
