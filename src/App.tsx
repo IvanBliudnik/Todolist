@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {TaskType, Todolist} from './Todolist';
+import {Todolist} from './Todolist';
 import {v1} from "uuid";
 
 //     Пример useState на счётчике:
@@ -12,7 +12,8 @@ import {v1} from "uuid";
 //     return <div onClick={() => {setData(data+1)}} >{data}</div>
 // }
 
-export type FilterValuesType = "all"| "completed" | "active"
+export type FilterValuesType = "all" | "completed" | "active"
+
 
 export function App() {
     const initTasks = [
@@ -23,7 +24,6 @@ export function App() {
         {id: v1(), title: 'Typescript', isDone: false},
         {id: v1(), title: 'RTK Query', isDone: false},
     ]
-    console.log(initTasks)
     //Обьяснение useState как блока сохранения первоначальных данных,
     // до нажатия кнопки "x"(удалить). После его запуска он выбрасывает массив
     // в котором находятся 2 элемента [ data , () => {} ]
@@ -48,6 +48,7 @@ export function App() {
     let [tasks, setTasks] = useState(initTasks)
     // задаём на выход ожидаемый tasks.filter((t=>{t.isDone === true || false}))
     let [filter, setFilter] = useState<FilterValuesType>("all")
+
     //какие tasks отдать в Todolist на отрисовку? => см.filter
     function removeTask(id: string) {
         // tasks.filter пропусти те initTasks id которых не равна
@@ -59,8 +60,9 @@ export function App() {
     function addTask(title: string) {
         let newTask = {
             id: v1(),
-            title:"New Task",
-            isDone: false};
+            title: "New Task",
+            isDone: false
+        };
         let newTasks = [newTask, ...tasks];
         setTasks(newTasks);
     }
@@ -83,11 +85,11 @@ export function App() {
         <div className="App">
             <Todolist title="What to learn"
                       tasks={tasksForTodolist}
-                      //функции callback ниже
+                //функции callback ниже
                       removeTask={removeTask}
                       changeFilter={changeFilter}
-                      addTask = {addTask}
+                      addTask={addTask}
             />
         </div>
     )
-}v1()
+}
