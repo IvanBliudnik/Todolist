@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {TaskType, Todolist} from './Todolist';
+import {v1} from "uuid";
 
 //     Пример useState на счётчике:
 // export function Counter() {
@@ -15,14 +16,14 @@ export type FilterValuesType = "all"| "completed" | "active"
 
 export function App() {
     const initTasks = [
-        {id: 1, title: 'HTML&CSS', isDone: true},
-        {id: 2, title: 'JS', isDone: true},
-        {id: 3, title: 'ReactJS', isDone: false},
-        {id: 4, title: 'Redux', isDone: false},
-        {id: 5, title: 'Typescript', isDone: false},
-        {id: 6, title: 'RTK Query', isDone: false},
+        {id: v1(), title: 'HTML&CSS', isDone: true},
+        {id: v1(), title: 'JS', isDone: true},
+        {id: v1(), title: 'ReactJS', isDone: false},
+        {id: v1(), title: 'Redux', isDone: false},
+        {id: v1(), title: 'Typescript', isDone: false},
+        {id: v1(), title: 'RTK Query', isDone: false},
     ]
-
+    console.log(initTasks)
     //Обьяснение useState как блока сохранения первоначальных данных,
     // до нажатия кнопки "x"(удалить). После его запуска он выбрасывает массив
     // в котором находятся 2 элемента [ data , () => {} ]
@@ -44,15 +45,24 @@ export function App() {
 // }
 
     //краткая форма записи useState которая выше
-    let [tasks, setTasks] = useState<Array<TaskType>>(initTasks)
+    let [tasks, setTasks] = useState(initTasks)
     // задаём на выход ожидаемый tasks.filter((t=>{t.isDone === true || false}))
     let [filter, setFilter] = useState<FilterValuesType>("all")
     //какие tasks отдать в Todolist на отрисовку? => см.filter
-    function removeTask(id: number) {
+    function removeTask(id: string) {
         // tasks.filter пропусти те initTasks id которых не равна
         //t.id которую надо удалить
         let filteredTasks = tasks.filter(t => t.id !== id)
         setTasks(filteredTasks);
+    }
+
+    function addTask(title: string) {
+        let newTask = {
+            id: v1(),
+            title:"New Task",
+            isDone: false};
+        let newTasks = [newTask, ...tasks];
+        setTasks(newTasks);
     }
 
     function changeFilter(newValue: FilterValuesType) {
@@ -69,8 +79,6 @@ export function App() {
         tasksForTodolist = tasks.filter(t => !t.isDone)
     }
 
-
-
     return (
         <div className="App">
             <Todolist title="What to learn"
@@ -78,8 +86,8 @@ export function App() {
                       //функции callback ниже
                       removeTask={removeTask}
                       changeFilter={changeFilter}
+                      addTask = {addTask}
             />
         </div>
     )
-}
-
+}v1()
