@@ -22,7 +22,7 @@ export function App() {
         {id: v1(), title: 'ReactJS', isDone: false},
         {id: v1(), title: 'Redux', isDone: false},
         {id: v1(), title: 'Typescript', isDone: false},
-        {id: v1(), title: 'RTK Query', isDone: false},
+        {id: v1(), title: 'RTK query', isDone: false},
     ]
     //Обьяснение useState как блока сохранения первоначальных данных,
     // до нажатия кнопки "x"(удалить). После его запуска он выбрасывает массив
