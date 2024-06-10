@@ -4,12 +4,13 @@ type ButtonPropsType = {
     title: string,
     onClickHandler?: () => void,
     disabled?: boolean,
+    classes?: string
 }
 
 export const Button = (props:ButtonPropsType) => {
     return (
         <>
-            <button onClick={props.onClickHandler} disabled = {props.disabled}>{props.title}</button>
+            <button className={props.classes} onClick={props.onClickHandler} disabled = {props.disabled}>{props.title}</button>
         </>
     );
 };
