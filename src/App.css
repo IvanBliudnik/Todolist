@@ -15,3 +15,15 @@
 .task {
   font-weight: bold;
 }
+.error {
+  color: red;
+}
+.error-message {
+  color: red;
+}
+.active-filter {
+  background-color: lightgreen;
+}
+.is-Done {
+  opacity: 0.5;
+}

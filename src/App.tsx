@@ -50,6 +50,9 @@ export function App() {
         let filteredTasks = tasks.filter(t => t.id !== id)
         setTasks(filteredTasks);
     }
+    function deleteAllTasks() {
+        setTasks([])
+    };
     function addTask(title: string) {
         let newTask = {
             id: v1(),
@@ -71,10 +74,17 @@ export function App() {
     if (filter === "active") {
         tasksForTodolist = tasks.filter(t => !t.isDone)
     }
+
     const changeTaskStatus = (taskId: string, newIsDoneValue: boolean) => {
-        const nextState: Array<TaskType> = tasks.map(t => t.id === taskId ? {...t, isDone: newIsDoneValue} : t)
-        setTasks(nextState)
+        let task = tasks.find(t => t.id===taskId);
+        if (task) {
+            task.isDone = newIsDoneValue
+        }
+        setTasks([...tasks])
+        // const nextState: Array<TaskType> = tasks.map(t => t.id === taskId ? {...t, isDone: newIsDoneValue} : t)
+        // setTasks(nextState)
     }
+
     return (
         <div className="App">
             <Todolist title="What to learn"
@@ -84,6 +94,8 @@ export function App() {
                       changeFilter={changeFilter}
                       changeTaskStatus={changeTaskStatus}
                       addTask={addTask}
+                      deleteAllTasks={deleteAllTasks}
+                      filter = {filter}
             />
         </div>
     )
