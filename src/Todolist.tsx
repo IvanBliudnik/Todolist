@@ -45,7 +45,7 @@ export const Todolist = (props: PropsType) => {
                 <input value={newTaskTitle}
                        onChange={onChangeTitleHandler}
                        onKeyDown={keyDownAddTaskHandler}
-                       className={error ? "error" : ""}
+                       className={  error ? "error" : ""}
                 />
                 {/*<span className={t.isDone ? "taskComplete" : "task"}></span>*/}
                 <Button title="+" onClickHandler={addTask} disabled={!newTaskTitle}/>
